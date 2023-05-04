@@ -1,0 +1,60 @@
+<main class="d-flex flex-column w-100">
+  <div class="container mt-5 p-5">
+    <h1 class="text-center mb-5">Lista di tools utilizzati/conosciuti nell'ambito dell'ICT</h1>
+    <hr />
+
+    <form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+      <div class="form-group d-flex flex-column gap-2">
+        <label for="task">Tools:</label>
+        <input
+          type="text"
+          id="task"
+          class="form-control mb-2"
+          placeholder="Inserisci un tools da inserire"
+          ngModel
+          name="task"
+          #taskInput
+          required
+        />
+        <small
+          class="form-text text-danger"
+          *ngIf="taskForm.invalid && taskForm.dirty"
+          >Campo Obbligatorio</small
+        >
+      </div>
+
+      <button
+        id="submitButton"
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="taskForm.invalid"
+      >
+        Inserisci
+      </button>
+    </form>
+
+    <hr />
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Tools</th>
+          <th scope="col">Conosciuta</th>
+          <th scope="col">Cancella</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of todoList; index as i">
+          <td>{{ task.tools }}</td>
+          <td>
+            <input type="checkbox" id="myCheckbox" (change)="onCheck(i)" [checked]="task.isCompleted"/>
+          </td>
+          <td>
+            <button (click)="onDelete(i)" class="btn btn-sm btn-danger">
+              Elimina
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>

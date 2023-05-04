@@ -1,0 +1,12 @@
+nav {
+  height: 80px;
+  justify-content: space-between;
+  padding: 30px 70px;
+  background-color: bisque;
+}
+
+
+nav .logo-left-nav,
+.logo-right-nav {
+  width: 70px;
+}
